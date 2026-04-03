@@ -1,0 +1,28 @@
+# Executables
+*.exe
+
+# Object files
+*.o
+*.obj
+
+# Output files
+*.out
+
+# Debug files
+*.log
+
+# Visual Studio files
+.vs/
+*.vcxproj*
+*.sln
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+Thumbs.db
