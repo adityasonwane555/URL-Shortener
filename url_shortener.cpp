@@ -13,13 +13,13 @@ public:
       return "url" + to_string(counter);
     }
 
-    string shortenURL(string longURL) {
+    string shortenURL(const string& longURL) {
         string shortCode = generateShortCode();
         shortToLong[shortCode] = longURL;
         return shortCode;
     }
 
-    string getOriginalURL(string shortCode) {
+    string getOriginalURL(const string& shortCode) {
         if (shortToLong.find(shortCode) != shortToLong.end()) {
             return shortToLong[shortCode];
         }
