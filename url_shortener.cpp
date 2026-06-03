@@ -56,18 +56,49 @@ public:
 
 int main() {
     URLShortener shortener;
+    int choice;
+    string input;
 
-    string longURL;
-    cout << "Enter URL: ";
-    cin >> longURL;
+    while (true) {
+        cout << "\n=== URL Shortener Menu ===\n";
+        cout << "1. Shorten URL\n";
+        cout << "2. Retrieve Original URL\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice (1-3): ";
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number between 1 and 3.\n";
+            continue;
+        }
 
-    string shortCode = shortener.shortenURL(longURL);
-    cout << "Shortened URL: short.ly/" <<shortCode << endl;
-
-    cout << "Enter short code to retrieve: ";
-    string code;
-    cin >> code;
-
-    cout << "Original URL: " << shortener.getOriginalURL(code) << endl;
+        if (choice == 1) {
+            cout << "Enter long URL: ";
+            cin >> input;
+            string shortCode = shortener.shortenURL(input);
+            if (shortCode == "Invalid URL") {
+                cout << "Error: The URL format is invalid.\n";
+            } else {
+                cout << "Shortened URL: short.ly/" << shortCode << "\n";
+            }
+        } else if (choice == 2) {
+            cout << "Enter short code (or full shortened URL): ";
+            cin >> input;
+            size_t slashPos = input.find_last_of('/');
+            string code = (slashPos == string::npos) ? input : input.substr(slashPos + 1);
+            
+            string originalURL = shortener.getOriginalURL(code);
+            if (originalURL == "Short code not found.") {
+                cout << "Error: " << originalURL << "\n";
+            } else {
+                cout << "Original URL: " << originalURL << "\n";
+            }
+        } else if (choice == 3) {
+            cout << "Goodbye!\n";
+            break;
+        } else {
+            cout << "Invalid choice. Please choose 1, 2, or 3.\n";
+        }
+    }
     return 0;
 }
