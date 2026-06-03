@@ -20,8 +20,9 @@ public:
     }
 
     string getOriginalURL(const string& shortCode) {
-        if (shortToLong.find(shortCode) != shortToLong.end()) {
-            return shortToLong[shortCode];
+        auto it = shortToLong.find(shortCode);
+        if (it != shortToLong.end()) {
+            return it->second;
         }
         return "Short code not found.";
     }
