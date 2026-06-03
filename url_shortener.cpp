@@ -5,6 +5,7 @@ using namespace std;
 class URLShortener {
 private:
     unordered_map<string, string> shortToLong;
+    unordered_map<string, string> longToShort;
     int counter = 0;
 
 public:
@@ -14,8 +15,13 @@ public:
     }
 
     string shortenURL(const string& longURL) {
+        auto it = longToShort.find(longURL);
+        if (it != longToShort.end()) {
+            return it->second;
+        }
         string shortCode = generateShortCode();
         shortToLong[shortCode] = longURL;
+        longToShort[longURL] = shortCode;
         return shortCode;
     }
 
