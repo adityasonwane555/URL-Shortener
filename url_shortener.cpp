@@ -10,8 +10,15 @@ private:
 
 public:
     string generateShortCode() {
-      counter++;
-      return "url" + to_string(counter);
+        counter++;
+        int temp = counter;
+        const string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string shortCode = "";
+        while (temp > 0) {
+            shortCode = chars[temp % 62] + shortCode;
+            temp /= 62;
+        }
+        return shortCode;
     }
 
     string shortenURL(const string& longURL) {
