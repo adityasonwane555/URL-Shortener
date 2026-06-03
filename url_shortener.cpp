@@ -8,6 +8,16 @@ private:
     unordered_map<string, string> longToShort;
     int counter = 0;
 
+    bool isValidURL(const string& url) {
+        if (url.empty()) return false;
+        if (url.find(' ') != string::npos) return false;
+        size_t dotPos = url.find('.');
+        if (dotPos == string::npos || dotPos == 0 || dotPos == url.length() - 1) {
+            return false;
+        }
+        return true;
+    }
+
 public:
     string generateShortCode() {
         counter++;
@@ -22,6 +32,9 @@ public:
     }
 
     string shortenURL(const string& longURL) {
+        if (!isValidURL(longURL)) {
+            return "Invalid URL";
+        }
         auto it = longToShort.find(longURL);
         if (it != longToShort.end()) {
             return it->second;
