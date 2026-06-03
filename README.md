@@ -4,7 +4,7 @@ A high-performance, console-based URL Shortener written in C++. This application
 
 ---
 
-## ✨ Features
+## Features
 
 - **Base62 Short Codes**: Converts auto-incrementing ID sequences into highly compact Base62 alphanumeric codes (characters `0-9`, `a-z`, `A-Z`).
 - **Bi-directional Memory Mapping**: Caches both short-to-long and long-to-short URL mappings to prevent duplicate entries and optimize lookups.
@@ -14,7 +14,7 @@ A high-performance, console-based URL Shortener written in C++. This application
 
 ---
 
-## 🛠️ How It Works Under the Hood
+## How It Works Under the Hood
 
 1. **URL Validation**: Before processing, the application inspects the structure of the long URL.
 2. **Lookup Checks**: It checks the reverse lookup map (`longToShort`) to see if the URL has already been shortened. If so, it returns the existing code immediately.
@@ -24,7 +24,7 @@ A high-performance, console-based URL Shortener written in C++. This application
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -52,7 +52,7 @@ Run the compiled executable:
 
 ---
 
-## 💻 CLI Usage Example
+## CLI Usage Example
 
 ```text
 === URL Shortener Menu ===
@@ -74,7 +74,7 @@ Original URL: google.com
 
 ---
 
-## 📊 Complexity Analysis
+## Complexity Analysis
 
 | Operation | Time Complexity (Average) | Space Complexity (Worst) |
 | :--- | :--- | :--- |
